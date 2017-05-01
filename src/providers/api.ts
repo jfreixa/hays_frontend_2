@@ -17,8 +17,18 @@ export class Api {
   }
 
   completeTask(task: Task): Observable<Task> {
-    return this.http.patch(`${this.API_PATH}/task/${task.id}`, {})
-      .map(res => res.json() || []);
+    return this.http.patch(`${this.API_PATH}/tasks/${task.id}`, '')
+      .map(res => res.json());
+  }
+
+  deleteTask(task: Task): Observable<Task> {
+    return this.http.delete(`${this.API_PATH}/tasks/${task.id}`, '')
+      .map(res => res.json());
+  }
+
+  createTask(task: Task): Observable<Task> {
+    return this.http.delete(`${this.API_PATH}/tasks/${task.id}`, '')
+      .map(res => res.json());
   }
 
 }

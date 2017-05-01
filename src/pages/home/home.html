@@ -26,12 +26,12 @@
           <button ion-button color="light">
             <ion-icon name="create"></ion-icon>
           </button>
-          <button ion-button color="danger">
+          <button ion-button (click)="deleteTask(task)" color="danger">
             <ion-icon name="trash"></ion-icon>
           </button>
           <button ion-button (click)="completeTask(task)" color="primary">
-            <ion-icon *ngIf="!task.state" name="checkmark"></ion-icon>
-            <ion-icon *ngIf="task.state" name="close"></ion-icon>
+            <p *ngIf="task.state">DONE</p>
+            <p *ngIf="!task.state">TODO</p>
           </button>
         </ion-item-options>
       </ion-item-sliding>
