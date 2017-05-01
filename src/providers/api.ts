@@ -32,4 +32,18 @@ export class Api {
       .map(res => res.json());
   }
 
+  updateSection(section: Section): Observable<Section> {
+    return this.http.put(`${this.API_PATH}/sections/${section.id}`, {
+      title: section.title
+    })
+      .map(res => res.json());
+  }
+
+  createSection(section: Section): Observable<Section> {
+    return this.http.post(`${this.API_PATH}/sections`, {
+      title: section.title
+    })
+      .map(res => res.json());
+  }
+
 }

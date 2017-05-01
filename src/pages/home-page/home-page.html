@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <button ion-button>Create section</button>
+  <button ion-button (click)="createSection()">Create section</button>
   <ion-list>
     <ion-item-group *ngFor="let section of sections$ | async">
       <ion-item-divider color="light">

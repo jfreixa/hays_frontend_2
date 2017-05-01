@@ -1,3 +1,4 @@
+import { Api } from './../../providers/api';
 import { Section } from './../../models/Section';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -15,14 +16,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SectionPage {
   public section:Section;
+  public method: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private api : Api) {
     this.section = this.navParams.get("section");
+    this.method = this.navParams.get("method");    
   }
 
-  ionViewDidLoad() {
-    console.log(this.section)
-    console.log('ionViewDidLoad SectionPage');
+  submitForm () {
+    if(this.method === "update") {
+      this.api.updateSection(this.section).subscribe(()=>{
+        this.navCtrl.popToRoot();
+      });
+    } else {
+      this.api.createSection(this.section).subscribe(()=>{
+        this.navCtrl.popToRoot();
+      });
+    }
+    
   }
 
 }

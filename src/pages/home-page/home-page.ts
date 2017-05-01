@@ -24,7 +24,6 @@ export class HomePage {
 
   completeTask(task: Task) {
     this.api.completeTask(task).subscribe(({state})=>{
-      console.log(state)
       task.state = state;
     });
   }
@@ -42,7 +41,18 @@ export class HomePage {
   }
 
   editSection(section: Section) {
-    this.navCtrl.push(SectionPage, {section})
+    this.navCtrl.push(SectionPage, {
+      section,
+      method: "update"
+    })
+  }
+
+  createSection() {
+    let section = new Section(null, null, null);
+    this.navCtrl.push(SectionPage, {
+      section,
+      method: "create"
+    })
   }
 
 }
