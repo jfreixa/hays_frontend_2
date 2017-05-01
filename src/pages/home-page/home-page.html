@@ -12,18 +12,18 @@
     <ion-item-group *ngFor="let section of sections$ | async">
       <ion-item-divider color="light">
         {{ section.title }}
-        <ion-icon name="create" (click)="editSection(section)" item-right></ion-icon>
+        <ion-icon name="create" (click)="updateSection(section)" item-right></ion-icon>
         <ion-icon name="trash" (click)="deleteSection(section)" item-right></ion-icon>
       </ion-item-divider>
       <ion-item>
-        <button ion-button>Create task</button>
+        <button ion-button (click)="createTask(section)">Create task</button>
       </ion-item>
       <ion-item-sliding *ngFor="let task of section.tasks">
         <ion-item>
           <h2>{{ task.title }}</h2>
         </ion-item>
         <ion-item-options side="right">
-          <button ion-button color="light">
+          <button ion-button (click)="updateTask(section, task)" color="light">
             <ion-icon name="create"></ion-icon>
           </button>
           <button ion-button (click)="deleteTask(task)" color="danger">

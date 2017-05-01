@@ -46,4 +46,20 @@ export class Api {
       .map(res => res.json());
   }
 
+  updateTask(section: Section, task: Task): Observable<Section> {
+    return this.http.put(`${this.API_PATH}/tasks/${task.id}`, {
+      title: task.title,
+      section: section.id
+    })
+      .map(res => res.json());
+  }
+
+  createTask(section: Section, task: Task): Observable<Section> {
+    return this.http.post(`${this.API_PATH}/tasks`, {
+      title: task.title,
+      section: section.id
+    })
+      .map(res => res.json());
+  }
+
 }

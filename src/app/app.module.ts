@@ -1,3 +1,4 @@
+import { TaskPage } from './../pages/task-page/task-page';
 import { Api } from './../providers/api';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -15,7 +16,8 @@ import { SectionPage } from './../pages/section-page/section-page';
   declarations: [
     MyApp,
     HomePage,
-    SectionPage
+    SectionPage,
+    TaskPage
   ],
   imports: [
     HttpModule,
@@ -26,7 +28,8 @@ import { SectionPage } from './../pages/section-page/section-page';
   entryComponents: [
     MyApp,
     HomePage,
-    SectionPage
+    SectionPage,
+    TaskPage
   ],
   providers: [
     Api,

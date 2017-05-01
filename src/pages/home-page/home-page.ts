@@ -1,3 +1,4 @@
+import { TaskPage } from './../task-page/task-page';
 import { SectionPage } from './../section-page/section-page';
 import { Task } from './../../models/Task';
 import { Observable } from 'rxjs/Observable';
@@ -40,11 +41,11 @@ export class HomePage {
     });
   }
 
-  editSection(section: Section) {
+  updateSection(section: Section) {
     this.navCtrl.push(SectionPage, {
       section,
       method: "update"
-    })
+    });
   }
 
   createSection() {
@@ -52,7 +53,24 @@ export class HomePage {
     this.navCtrl.push(SectionPage, {
       section,
       method: "create"
-    })
+    });
+  }
+
+  updateTask(section: Section, task: Task) {
+    this.navCtrl.push(TaskPage, {
+      task,
+      section,
+      method: "update"
+    });
+  }
+
+  createTask(section: Section) {
+    let task = new Task(null, null, false, null);
+    this.navCtrl.push(TaskPage, {
+      task,
+      section,
+      method: "create"
+    });
   }
 
 }
