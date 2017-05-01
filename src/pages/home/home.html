@@ -1,14 +1,40 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      How About Your Sales
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <button ion-button>Create section</button>
+  <ion-list>
+    <ion-item-group *ngFor="let section of sections$ | async">
+      <ion-item-divider color="light">
+        {{ section.title }}
+        <ion-icon name="create" item-right></ion-icon>
+        <ion-icon name="trash" item-right></ion-icon>
+      </ion-item-divider>
+      <ion-item>
+        <button ion-button>Create task</button>
+      </ion-item>
+      <ion-item-sliding *ngFor="let task of section.tasks">
+        <ion-item>
+          <h2>{{ task.title }}</h2>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="light">
+            <ion-icon name="create"></ion-icon>
+          </button>
+          <button ion-button color="danger">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+          <button ion-button (click)="completeTask(task)" color="primary">
+            <ion-icon *ngIf="!task.state" name="checkmark"></ion-icon>
+            <ion-icon *ngIf="task.state" name="close"></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-item-group>
+</ion-list>
 </ion-content>
