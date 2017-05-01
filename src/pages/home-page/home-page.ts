@@ -1,12 +1,16 @@
+import { SectionPage } from './../section-page/section-page';
 import { Task } from './../../models/Task';
 import { Observable } from 'rxjs/Observable';
 import { Api } from './../../providers/api';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 
+import { Section } from './../../models/Section';
+
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-home-page',
+  templateUrl: 'home-page.html',
 })
 export class HomePage {
   public sections$: Observable<any[]>;
@@ -31,10 +35,14 @@ export class HomePage {
     });
   }
 
-  createTask(task: Task) {
-    this.api.createTask(task).subscribe((task) => {
+  deleteSection(section: Section) {
+    this.api.deleteSection(section).subscribe((section) => {
       this.sections$ = this.api.getSections();
     });
+  }
+
+  editSection(section: Section) {
+    this.navCtrl.push(SectionPage, {section})
   }
 
 }

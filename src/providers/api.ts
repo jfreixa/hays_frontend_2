@@ -1,3 +1,4 @@
+import { Section } from './../models/Section';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -26,8 +27,8 @@ export class Api {
       .map(res => res.json());
   }
 
-  createTask(task: Task): Observable<Task> {
-    return this.http.delete(`${this.API_PATH}/tasks/${task.id}`, '')
+  deleteSection(section: Section): Observable<Section> {
+    return this.http.delete(`${this.API_PATH}/sections/${section.id}`, '')
       .map(res => res.json());
   }
 
